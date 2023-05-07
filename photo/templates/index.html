@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if photos %}
+<ul>
+    {% for photo in photos %}
+    <li><a href="{% url 'photo:detail' photo.id %}">{{photo.title}}</a></li>
+    {% endfor%}
+</ul>
+{% else %}
+<p>No photos are available.</p>
+{% endif%}
+</body>
+</html>

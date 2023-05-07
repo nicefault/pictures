@@ -1,0 +1,8 @@
+<h1>{{photo.title}}</h1>
+
+<ul>
+    {% for reply in photo.reply_set.all %}
+    <li>{{reply.text}} -- {{reply.like}} like{{reply.like|pluraize}}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'detail' photo.id %}">Like again?</a>

@@ -1,0 +1,13 @@
+
+<form action="{% url 'photo:like' photo.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{photo.title}}</h1></legend>
+        {% if error_message %} <p><strong>{{error_message}}</strong></p>{% endif %}
+        {% for reply in photo.reply_set.all %}
+            <input type="radio" name="reply" id="reply{{forloop.counter}}" value="{{reply.id}}">
+            <label for="reply{{forloop.counter}}">{{reply.text}}</label><br>
+        {% endfor %}
+    </fieldset>
+<input type="submit" value="Reply">
+</form>
